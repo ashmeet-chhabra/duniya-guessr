@@ -47,8 +47,6 @@ Both players use the same device. Enter names, then take turns guessing.
 
 ## Deploy on Render
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
-
 1. Create a **Web Service** and connect your GitHub repo
 2. Set build command: `npm run build`
 3. Set start command: `npm start`
