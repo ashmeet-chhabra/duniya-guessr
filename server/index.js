@@ -124,6 +124,9 @@ if (LAN_IP) allowedOrigins.push(`http://${LAN_IP}:5173`)
 app.use(cors({ origin: allowedOrigins }))
 app.use(express.json())
 
+const clientDist = path.resolve(__dirname, '..', 'client', 'dist')
+app.use(express.static(clientDist))
+
 function sanitizeUsername(username) {
   if (typeof username !== 'string') return null
   const trimmed = username.trim().slice(0, 20)
@@ -960,6 +963,12 @@ export async function startServer(options = {}) {
       if (!room) return callback?.({ error: 'Room not found. Server may have restarted.' })
       callback?.({ ...sanitizeRoom(room), roomCode })
     })
+  })
+
+  // SPA fallback — serve index.html for non-API, non-socket routes
+  app.get('*', (req, res) => {
+    if (req.path.startsWith('/socket.io') || req.path.startsWith('/api')) return
+    res.sendFile(path.join(clientDist, 'index.html'))
   })
 
   await new Promise((resolve, reject) => {
