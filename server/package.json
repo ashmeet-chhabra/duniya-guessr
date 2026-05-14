@@ -1,0 +1,25 @@
+{
+  "name": "duniyaguessr-server",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node index.js",
+    "start": "node index.js",
+    "test": "node --test test/*.test.js",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "coordinate_to_country": "^1.1.0",
+    "cors": "^2.8.5",
+    "countries-and-timezones": "^3.9.0",
+    "dotenv": "^17.4.2",
+    "express": "^4.21.1",
+    "socket.io": "^4.8.1",
+    "sql.js": "^1.11.0",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.3.0"
+  }
+}

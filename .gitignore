@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+*.db
+.vite-cache/
+.vitest/
+.vitest-attachments/
+coverage/
+plan.md
