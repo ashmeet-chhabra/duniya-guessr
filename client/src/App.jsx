@@ -186,11 +186,12 @@ export default function App() {
                 {players.map((p, i) => {
                   const isMe = p.profileId === profile?.id
                   const guessed = isLocal ? false : (isMe ? hasGuessed : opponentGuessed)
+                  const otherGuessed = isLocal ? false : (isMe ? opponentGuessed : hasGuessed)
                   const isActive = isLocal && activePlayerIndex === i
                   return (
                     <div key={p.profileId || i} className={`hud-player ${isActive ? 'active' : ''}`}>
                       <span className={`hud-player-name ${isActive ? 'active' : ''}`}>
-                        {p.username}{!isLocal && guessed && <span className="hud-tick"> ✓</span>}
+                        {p.username}{!isLocal && guessed && !otherGuessed && <span className="hud-tick"> ✓</span>}
                       </span>
                       <span className="hud-val">{p.score || 0}</span>
                     </div>

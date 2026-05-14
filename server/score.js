@@ -12,6 +12,6 @@ export function calculateScore(actual, guess, maxDistance = 20000) {
   const distance = getDistanceKm(actual.lat, actual.lng, guess.lat, guess.lng)
   return {
     score: Math.max(0, Math.round(5000 * Math.E ** (-10 * (distance / maxDistance)))),
-    distanceKm: Math.round(distance * 10) / 10,
+    distanceKm: Math.floor(distance),
   }
 }

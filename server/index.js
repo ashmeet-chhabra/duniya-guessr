@@ -133,7 +133,7 @@ function sanitizeUsername(username) {
 }
 
 function isValidRoomCode(code) {
-  return typeof code === 'string' && /^[A-Z0-9]{4}$/.test(code)
+  return typeof code === 'string' && /^\d{4}$/.test(code)
 }
 
 app.post('/api/profiles', (req, res) => {
@@ -212,11 +212,9 @@ app.get('/api/profiles/:id/history', (req, res) => {
 const rooms = {}
 
 function generateRoomCode() {
-  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'
   let code
   do {
-    code = ''
-    for (let i = 0; i < 4; i++) code += chars[Math.floor(Math.random() * chars.length)]
+    code = String(Math.floor(1000 + Math.random() * 9000))
   } while (rooms[code])
   return code
 }

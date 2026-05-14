@@ -226,7 +226,7 @@ export default function ConnectionUI({ onConnect, onConnectLocal, error, isSubmi
 
   const handleJoin = () => {
     if (!username.trim() || !roomCode.trim() || isSubmitting) return
-    onConnect({ type: 'join', username: username.trim(), roomCode: roomCode.trim().toUpperCase() })
+    onConnect({ type: 'join', username: username.trim(), roomCode: roomCode.trim() })
   }
 
   const handleLocalStart = () => {
@@ -320,7 +320,7 @@ export default function ConnectionUI({ onConnect, onConnectLocal, error, isSubmi
           {joining && (
             <div className="field">
               <label>Room Code</label>
-              <input value={roomCode} onChange={(e) => setRoomCode(e.target.value.toUpperCase())} placeholder="ABCD" maxLength={4} disabled={isSubmitting} onKeyDown={(e) => e.key === 'Enter' && handleJoin()} />
+              <input value={roomCode} onChange={(e) => setRoomCode(e.target.value)} placeholder="1234" maxLength={4} disabled={isSubmitting} onKeyDown={(e) => e.key === 'Enter' && handleJoin()} />
             </div>
           )}
           {error && <div className="error-msg">{error}</div>}
