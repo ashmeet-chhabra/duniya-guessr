@@ -32,13 +32,13 @@ export default function StreetView({ location }) {
           Loading Street View...
         </div>
       )}
-      <div style={{ position: 'absolute', top: -72, left: 0, width: '100%', height: 'calc(100% + 72px)' }}>
+      <div style={{ position: 'absolute', inset: 0 }}>
         <iframe
           src={`https://www.google.com/maps/embed/v1/streetview?key=${apiKey}&location=${lat},${lng}&heading=0&pitch=0&fov=80`}
           referrerPolicy="no-referrer-when-downgrade"
           allow="autoplay; encrypted-media"
           title="Street View"
-          style={{ width: '100%', height: '100%', border: 0 }}
+          style={{ width: '100%', height: 'calc(100% + 72px)', transform: 'translateY(-72px)', border: 0 }}
           onError={() => setLoadError(true)}
         />
       </div>

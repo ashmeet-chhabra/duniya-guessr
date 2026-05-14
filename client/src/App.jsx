@@ -204,8 +204,6 @@ export default function App() {
                     {connectionStatus === 'reconnecting' ? 'Reconnecting...' : 'Disconnected'}
                   </span>
                 )}
-                {!isLocal && <span style={{ color:'var(--muted)', fontSize:11 }}>{profile?.username}</span>}
-                {!isLocal && <span style={{ color:'var(--accent)', fontSize:11, fontFamily:'var(--mono)' }}>{roomCode}</span>}
                 <button className="hud-quit" onClick={() => { if (confirm('Quit to menu?')) handlePlayAgain() }} title="Quit to menu">✕</button>
               </div>
             </div>
